@@ -21,11 +21,10 @@
   },
     increaseCount() {
       this.count = this.items.reduce((acc, {quantityOfGoods}) => acc + quantityOfGoods, 0);
-      console.log(this.count);
     },
 
     calculateItemPrice() {
-      this.totalPrice = this.items.reduce((acc, {priceProduct}) => acc + priceProduct, 0);
+      this.totalPrice =  this.items.reduce((acc, item) => acc + (item.priceProduct * item.quantityOfGoods), 0);
     },
 
     clear() {
