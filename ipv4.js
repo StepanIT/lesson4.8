@@ -1,6 +1,6 @@
   'use strict'
 
- new Set (const listIPv4 = [
+const listIPv4 = [
   "10.90.112.24",
   "10.64.146.250",
   "10.215.63.84",
@@ -24446,4 +24446,10 @@
   "10.195.201.68",
   "10.78.125.206",
   "10.0.32.20"
-]);
+];
+
+Array.from(new Set(listIPv4));
+
+const count = Array.from(new Set(listIPv4)).filter((item) => (item)).length;
+
+console.log(count);
