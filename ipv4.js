@@ -1,4 +1,4 @@
-//   'use strict'
+// 'use strict'
 
 // const listIPv4 = [
 //   "10.90.112.24",

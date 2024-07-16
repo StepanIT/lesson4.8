@@ -54,18 +54,3 @@
 
 
 
-const rectangle = {
-    width: 5,
-    height: 5,
-    yryfDdf: 'см',
-  
-    get squareArea() {
-      return `${this.width} ${this.height} ${this.yryfDdf}`;
-    },
-  
-    set squareArea(value) {
-      [this.width, this.height] = value(this.width * this.height);
-    },
-  };
-
-  alert(rectangle.squareArea);
