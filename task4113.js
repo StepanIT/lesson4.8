@@ -1,32 +1,35 @@
-'use strict'
+// 'use strict';
 
-class Rectangle {
-	constructor(width, height) {
-		this.width = width; this.height = height;
-	}
+// const rectangle = {
+//   width: 5,
+//   height: 5,
+//   areaOfRectangle: 0,
+//   perimeterOfRectangle: 0,
 
-	// Геттер для получения площади прямоугольника
-	get area() {
-		return this.width * this.height;
-	}
+//   get square() {
+//     return this.areaOfRectangle + 'см';
+//   },
+//   set square(value) {
+//     if (isNaN(this.square)) {
+//       this.height = value;
+//       this.areaOfRectangle = this.width * value;
+//     }
+//   },
 
-	// Сеттер для установки ширины прямоугольника
-	set width(value) {
-		if (value > 0) {
-			this.width = value;
-		}
-		else {
-			console.log("Ширина должна быть положительной");
-		}
-	}
 
-  // Сеттер для установки высоты прямоугольника
-	set height(value){
-		if (value > 0) {
-			this.height = value;
-		}
-		else {
-			console.log("Высота должна быть положительной");
-		} 
-	}
-}
+//   get perimetr() {
+//     return this.perimeterOfRectangle + 'см';
+//   },
+//   set perimetr(val) {
+//     if (isNaN(this.perimetr)) {
+//       this.width = val;
+//       this.perimeterOfRectangle = (this.height + val) * 2;
+//     }
+//   },
+// };
+
+// rectangle.square = 4020;
+// console.log(rectangle.square);
+
+// rectangle.perimetr = 5000;
+// console.log(rectangle.perimetr);
