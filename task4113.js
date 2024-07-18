@@ -1,35 +1,32 @@
 // 'use strict';
 
 // const rectangle = {
-//   width: 5,
-//   height: 5,
-//   areaOfRectangle: 0,
-//   perimeterOfRectangle: 0,
+//   _width: 5,
+//   _height: 5,
 
 //   get square() {
-//     return this.areaOfRectangle + 'см';
+//     return this._width * this._height + 'см';
 //   },
-//   set square(value) {
-//     if (isNaN(this.square)) {
-//       this.height = value;
-//       this.areaOfRectangle = this.width * value;
+
+//   get perimetr() {
+//     return (this._width + this._height) * 2 + 'см';
+//   },
+
+
+//   set width(newWidth) {
+//     if (typeof newWidth === 'number') {
+//       this._width = newWidth;
 //     }
 //   },
 
-
-//   get perimetr() {
-//     return this.perimeterOfRectangle + 'см';
-//   },
-//   set perimetr(val) {
-//     if (isNaN(this.perimetr)) {
-//       this.width = val;
-//       this.perimeterOfRectangle = (this.height + val) * 2;
+//   set height(newHeight) {
+//     if (typeof newHeight === 'number') {
+//       this._height = newHeight;
 //     }
 //   },
 // };
 
-// rectangle.square = 4020;
+// rectangle.width = 50;
+// rectangle.height = 50;
 // console.log(rectangle.square);
-
-// rectangle.perimetr = 5000;
 // console.log(rectangle.perimetr);
