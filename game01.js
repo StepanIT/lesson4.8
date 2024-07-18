@@ -1,32 +1,26 @@
-// 'use strict';
+'use strict';
 
+const randomNumber = Math.round(Math.random() * 100);
+console.log(randomNumber);
 
-// const foo = (number) => {
-//   const randomNumber = Math.round(Math.random() * 100);
-//   console.log(randomNumber);
-//   number = prompt('Введите число от 1 до 100');
+const foo = num => {
+  const number = prompt('Введите число от 1 до 100');
 
-//   if (randomNumber === null) {
-//     return foo(number);
-//   }
+  if (number === null) {
+    return;
+  }
+  if (isNaN(number)) {
+    alert('Введи число!');
+  } else if (number > randomNumber) {
+    alert('Меньше! Введите новый вариант ');
+  } else if (number < randomNumber) {
+    alert('Больше! Введите число ');
+  } else {
+    alert('Правильно!');
+    return;
+  }
+  foo(num);
+};
 
-//   if (isNaN(number)) {
-//     alert('Введи число!');
-//     return foo(number);
-//   }
-
-//   if (number > randomNumber) {
-//     alert('Меньше! Введите новый вариант ');
-//     return foo(number);
-//   }
-
-//   if (number < randomNumber) {
-//     alert('Больше! Введите число ');
-//     return foo(number);
-//   }
-//   alert('Правильно!');
-//   return 'Вы победили';
-// };
-
-// console.log(foo());
+console.log(foo());
 
