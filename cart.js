@@ -5,11 +5,6 @@
 //   count: 0,
 //   discount: 0,
 
-
-//   get setDiscount() {
-//     return this.discount;
-//   },
-
 //   set setDiscount(promocode) {
 //     if (promocode === 'METHED') {
 //       this.discount = 15;
@@ -63,7 +58,7 @@
 // console.log(keys);
 
 
-// cart.setDiscount = 'NEWYEAR';
+// cart.setDiscount = 'METHED';
 // cart.add('Микроволновка', 7000, 15);
 // cart.add('Чайник', 2000, 5);
 // cart.add('Диван', 40000, 3);
