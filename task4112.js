@@ -1,18 +1,18 @@
-// 'use strict'
+// 'use strict';
 
-// let arr = [];
+// const arr = [];
 
 // const recursFoo = (array) => {
-// const randomInteger = Math.round(Math.random() * 10);
+//   const randomInteger = Math.round(Math.random() * 10);
 
-// arr.push(randomInteger);
+//   arr.push(randomInteger);
 
-// let sum = arr.reduce((a, b) => a += b, 0);
+//   const sum = arr.reduce((a, b) => a += b, 0);
 
-// if (sum < 50) {
-// return recursFoo();
-// }
-// return arr;
+//   if (sum < 50) {
+//     return recursFoo();
+//   }
+//   return arr;
 // };
 
 // console.log(recursFoo());
