@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 
 (() => {
@@ -8,11 +8,12 @@
 
 
     const getRandomIntInclusive = (min, max) => {
-
+        return Math.floor(Math.random() * 3);
 };
 
 
-    const getFigure = lang => {
+
+        const getFigure = lang => {
 
 };
 
@@ -26,10 +27,16 @@
         FIGURES_ENG : FIGURES_RUS;
 
         return function start() {
+            
+            let userChoice = prompt('сделайте выбор камень, ножницы или бумага');
 
-        };
+            const computerChoice = FIGURES_RUS[getRandomIntInclusive()];
+            console.log(computerChoice);
+        
+
+            return start();
 };
 
-
+}; 
     window.RPS = game;
 })();
