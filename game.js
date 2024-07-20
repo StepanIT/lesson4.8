@@ -28,10 +28,22 @@
 
         return function start() {
             
-            let userChoice = prompt('сделайте выбор камень, ножницы или бумага');
+            let userChoice = prompt('камень, ножницы или бумага?');
+            
+            if(userChoice === ''){
+                alert('Выберите из трёх вариантов');
+            }
+            if(userChoice === null){
+                confirm('Вы точно хотите выйти?');
+                if(userChoice === ''){
+                    return
+                }
+                
+            };
+            
 
             const computerChoice = FIGURES_RUS[getRandomIntInclusive()];
-            console.log(computerChoice);
+            
         
 
             return start();
