@@ -23,14 +23,16 @@
     //     FIGURES_ENG : FIGURES_RUS;
 
     return function start() {
-      
       const chooseWinner = (userChoice, computerChoice) => {
         if (userChoice === computerChoice) {
           return 'Ничья!';
         } else if (
-          (userChoice === FIGURES_RUS[0] && computerChoice === FIGURES_RUS[1]) ||
-              (userChoice === FIGURES_RUS[1] && computerChoice === FIGURES_RUS[2]) ||
-              (userChoice === FIGURES_RUS[2] && computerChoice === FIGURES_RUS[0])
+          (userChoice === FIGURES_RUS[0] &&
+             computerChoice === FIGURES_RUS[1]) ||
+              (userChoice === FIGURES_RUS[1] &&
+                 computerChoice === FIGURES_RUS[2]) ||
+              (userChoice === FIGURES_RUS[2] &&
+                 computerChoice === FIGURES_RUS[0])
         ) {
           result.player++;
           return 'Вы победили!';
@@ -40,12 +42,11 @@
         }
       };
 
-      
+
       const playRound = () => {
-        
         let userChoice = prompt('камень, ножницы или бумага?');
-        userChoice = figures.find(item => item.startsWith(userChoice.toLowerCase()));
-        
+
+
         if (userChoice === null) {
           const confirmExit = confirm('Точно ли вы хотите выйти?');
           if (confirmExit === true) {
@@ -57,17 +58,23 @@
           }
         }
 
-        
-        if (userChoice === '') {
+
+        const emptyLine = userChoice.trim();
+        if (emptyLine === '') {
           alert('Сделайте свой выбор');
           return playRound();
         }
-        else if (!FIGURES_RUS.includes(userChoice)) {
+
+        userChoice = FIGURES_RUS.find(item =>
+          item.startsWith(userChoice.toLowerCase()));
+
+        if (!FIGURES_RUS.includes(userChoice) || userChoice === '') {
           alert('Некорректный выбор. Попробуйте снова.');
           return playRound();
         }
-        
+
         const computerChoice = FIGURES_RUS[getRandomIntInclusive()];
+
         alert(`Вы выбрали: ${userChoice}`);
         alert(`Компьютер выбрал: ${computerChoice}`);
         alert(chooseWinner(userChoice, computerChoice));
@@ -75,12 +82,10 @@
 
         return start();
       };
-      
+
       return playRound();
     };
-    
   };
-  
 
 
   window.RPS = game;
