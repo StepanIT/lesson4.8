@@ -23,13 +23,14 @@
     //     FIGURES_ENG : FIGURES_RUS;
 
     return function start() {
+      
       const chooseWinner = (userChoice, computerChoice) => {
         if (userChoice === computerChoice) {
           return 'Ничья!';
         } else if (
-          (userChoice === 'камень' && computerChoice === 'ножницы') ||
-              (userChoice === 'ножницы' && computerChoice === 'бумага') ||
-              (userChoice === 'бумага' && computerChoice === 'камень')
+          (userChoice === FIGURES_RUS[0] && computerChoice === FIGURES_RUS[1]) ||
+              (userChoice === FIGURES_RUS[1] && computerChoice === FIGURES_RUS[2]) ||
+              (userChoice === FIGURES_RUS[2] && computerChoice === FIGURES_RUS[0])
         ) {
           result.player++;
           return 'Вы победили!';
@@ -39,9 +40,12 @@
         }
       };
 
-
+      
       const playRound = () => {
-        const userChoice = prompt('камень, ножницы или бумага?');
+        
+        let userChoice = prompt('камень, ножницы или бумага?');
+        userChoice = figures.find(item => item.startsWith(userChoice.toLowerCase()));
+        
         if (userChoice === null) {
           const confirmExit = confirm('Точно ли вы хотите выйти?');
           if (confirmExit === true) {
@@ -52,11 +56,17 @@
             return playRound();
           }
         }
-        if (!['камень', 'ножницы', 'бумага'].includes(userChoice)) {
+
+        
+        if (userChoice === '') {
+          alert('Сделайте свой выбор');
+          return playRound();
+        }
+        else if (!FIGURES_RUS.includes(userChoice)) {
           alert('Некорректный выбор. Попробуйте снова.');
           return playRound();
         }
-
+        
         const computerChoice = FIGURES_RUS[getRandomIntInclusive()];
         alert(`Вы выбрали: ${userChoice}`);
         alert(`Компьютер выбрал: ${computerChoice}`);
@@ -65,9 +75,12 @@
 
         return start();
       };
+      
       return playRound();
     };
+    
   };
+  
 
 
   window.RPS = game;
