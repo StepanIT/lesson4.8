@@ -2,56 +2,89 @@
 
 
 (() => {
-  // const FIGURES_ENG = ['rock', 'scissors', 'paper'];
+  const FIGURES_ENG = ['rock', 'scissors', 'paper'];
   const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
 
 
   const getRandomIntInclusive = (min, max) => Math.floor(Math.random() * 3);
 
 
-  // const getFigure = lang => {
+  const getFigure = (lang) => {
+    
+    if (lang.toLowerCase() === 'en' || lang.toLowerCase() === 'eng') {
+      return {
+        figures: FIGURES_ENG,
+        messages: {
+          prompt: 'Rock, scissors, or paper?',
+          confirmExit: 'Are you sure you want to exit?',
+          emptyChoice: 'Make your choice',
+          invalidChoice: 'Invalid choice. Try again.',
+          gameOver: (player, computer) =>
+            `Game over. Your score: ${player}, Computer's score: ${computer}`,
+          youChose: 'You chose:',
+          computerChose: 'Computer chose:',
+          draw: 'It\'s a draw!',
+          win: 'You win!',
+          lose: 'You lose!',
+        }
+      };
+    } else {
+      return {
+        figures: FIGURES_RUS,
+        messages: {
+          prompt: 'Камень, ножницы или бумага?',
+          confirmExit: 'Точно ли вы хотите выйти?',
+          emptyChoice: 'Сделайте свой выбор',
+          invalidChoice: 'Некорректный выбор. Попробуйте снова.',
+          gameOver: (player, computer) =>
+            `Игра окончена. Ваш счет: ${player}, Счет компьютера: ${computer}`,
+          youChose: 'Вы выбрали:',
+          computerChose: 'Компьютер выбрал:',
+          draw: 'Ничья!',
+          win: 'Вы победили!',
+          lose: 'Вы проиграли!',
+        }
+      };
+    }
+  };
 
-  // };
-
-
-  const game = (language) => {
+  const game = (language = 'ru') => {
     const result = {
       player: 0,
       computer: 0,
     };
-    // const lang = language === 'EN' || language === 'ENG' ?
-    //     FIGURES_ENG : FIGURES_RUS;
+
+    const {figures, messages} = getFigure(language)
 
     return function start() {
       const chooseWinner = (userChoice, computerChoice) => {
         if (userChoice === computerChoice) {
-          return 'Ничья!';
+          return messages.draw;
         } else if (
-          (userChoice === FIGURES_RUS[0] &&
-             computerChoice === FIGURES_RUS[1]) ||
-              (userChoice === FIGURES_RUS[1] &&
-                 computerChoice === FIGURES_RUS[2]) ||
-              (userChoice === FIGURES_RUS[2] &&
-                 computerChoice === FIGURES_RUS[0])
+          (userChoice === figures[0] &&
+             computerChoice === figures[1]) ||
+              (userChoice === figures[1] &&
+                 computerChoice === figures[2]) ||
+              (userChoice === figures[2] &&
+                 computerChoice === figures[0])
         ) {
           result.player++;
-          return 'Вы победили!';
+          return messages.win;
         } else {
           result.computer++;
-          return 'Вы проиграли!';
+          return messages.lose;
         }
       };
 
 
       const playRound = () => {
-        let userChoice = prompt('камень, ножницы или бумага?');
+        let userChoice = prompt(messages.prompt);
 
 
         if (userChoice === null) {
-          const confirmExit = confirm('Точно ли вы хотите выйти?');
+          const confirmExit = confirm(messages.confirmExit);
           if (confirmExit === true) {
-            alert(`Игра окончена. Ваш счет: ${result.player}
-            Счет компьютера: ${result.computer}`);
+            alert(messages.gameOver(result.player, result.computer));
             return;
           } else {
             return playRound();
@@ -61,22 +94,22 @@
 
         const emptyLine = userChoice.trim();
         if (emptyLine === '') {
-          alert('Сделайте свой выбор');
+          alert(messages.emptyChoice);
           return playRound();
         }
 
-        userChoice = FIGURES_RUS.find(item =>
+        userChoice = figures.find(item =>
           item.startsWith(userChoice.toLowerCase()));
 
-        if (!FIGURES_RUS.includes(userChoice) || userChoice === '') {
-          alert('Некорректный выбор. Попробуйте снова.');
+        if (!figures.includes(userChoice) || userChoice === '') {
+          alert(messages.invalidChoice);
           return playRound();
         }
 
-        const computerChoice = FIGURES_RUS[getRandomIntInclusive()];
+        const computerChoice = figures[getRandomIntInclusive()];
 
-        alert(`Вы выбрали: ${userChoice}`);
-        alert(`Компьютер выбрал: ${computerChoice}`);
+        alert(`${messages.youChose} ${userChoice}`);
+        alert(`${messages.computerChose} ${computerChoice}`);
         alert(chooseWinner(userChoice, computerChoice));
 
 
@@ -87,6 +120,14 @@
     };
   };
 
+  const playStart = (language) => {
+    const play = game(language);
+    play();
+  };
 
-  window.RPS = game;
+    playStart(prompt('Choose language(Выбери язык): "EN" for English(английский) or(или) "RU" for Russian(русский)'));
+ 
+ 
+    window.RPS = game;
+
 })();
