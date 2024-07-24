@@ -10,7 +10,6 @@
 
 
   const getFigure = (lang) => {
-    
     if (lang.toLowerCase() === 'en' || lang.toLowerCase() === 'eng') {
       return {
         figures: FIGURES_ENG,
@@ -26,7 +25,7 @@
           draw: 'It\'s a draw!',
           win: 'You win!',
           lose: 'You lose!',
-        }
+        },
       };
     } else {
       return {
@@ -43,7 +42,7 @@
           draw: 'Ничья!',
           win: 'Вы победили!',
           lose: 'Вы проиграли!',
-        }
+        },
       };
     }
   };
@@ -54,7 +53,7 @@
       computer: 0,
     };
 
-    const {figures, messages} = getFigure(language)
+    const {figures, messages} = getFigure(language);
 
     return function start() {
       const chooseWinner = (userChoice, computerChoice) => {
@@ -125,9 +124,8 @@
     play();
   };
 
-    playStart(prompt('Choose language(Выбери язык): "EN" for English(английский) or(или) "RU" for Russian(русский)'));
- 
- 
-    window.RPS = game;
+  playStart(prompt('Choose language: "EN" for English or "RU" for Russian'));
 
+
+  window.RPS = game;
 })();
