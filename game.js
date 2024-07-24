@@ -120,19 +120,19 @@
   };
 
   const playStart = (language) => {
-    language = 
+    language =
     (prompt('Choose language: "EN" for English or "RU" for Russian'));
     if (language === '') {
       return game();
     }
     if (language === null) {
-return playRound();
-    } else if 
-    (language !== null || 
+      return playStart();
+    } else if
+    (language !== null ||
     !['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
-    language =
+      language =
     prompt('Invalid input. Please choose "EN" for English or "RU" for Russian');
-    return playStart();
+      return playStart();
     }
 
     const play = game(language);
