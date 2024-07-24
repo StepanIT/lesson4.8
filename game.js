@@ -112,7 +112,7 @@
         alert(chooseWinner(userChoice, computerChoice));
 
 
-        return start();
+        return playRound();
       };
 
       return playRound();
@@ -120,11 +120,26 @@
   };
 
   const playStart = (language) => {
+    language = 
+    (prompt('Choose language: "EN" for English or "RU" for Russian'));
+    if (language === '') {
+      return game();
+    }
+    if (language === null) {
+return playRound();
+    } else if 
+    (language !== null || 
+    !['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
+    language =
+    prompt('Invalid input. Please choose "EN" for English or "RU" for Russian');
+    return playStart();
+    }
+
     const play = game(language);
     play();
   };
 
-  playStart(prompt('Choose language: "EN" for English or "RU" for Russian'));
+  playStart();
 
 
   window.RPS = game;
