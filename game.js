@@ -47,7 +47,7 @@
     }
   };
 
-  const game = (language = 'ru') => {
+  const game = (language) => {
     const result = {
       player: 0,
       computer: 0,
@@ -123,16 +123,18 @@
     language =
     (prompt('Choose language: "EN" for English or "RU" for Russian'));
     if (language === '') {
-      return game();
+      language = 'ru';
     }
-    if (language === null) {
-      return playStart();
-    } else if
-    (language !== null ||
-    !['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
+    while
+    (!['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
       language =
-    prompt('Invalid input. Please choose "EN" for English or "RU" for Russian');
-      return playStart();
+      prompt('Please choose "EN" for English or "RU" for Russian');
+      if
+      (!['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
+        alert('select "EN" or "RU"');
+      } else if (language === '') {
+        language = 'ru';
+      }
     }
 
     const play = game(language);
