@@ -130,7 +130,7 @@
       language =
       prompt('Please choose "EN" for English or "RU" for Russian');
       if
-      (!['en', 'eng', 'ru', 'рус', 'русский'].includes(language.toLowerCase())) {
+      (!['en', 'eng', 'ru', 'рус'].includes(language.toLowerCase())) {
         alert('select "EN" or "RU"');
       } else if (language === '') {
         language = 'ru';
